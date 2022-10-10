@@ -1,10 +1,8 @@
 import math
 
-H = int(input())
-S = int(input())
-V = int(input())
+H, S, V = map(int, input().split())
 
-i = 0
+i = 0.25
 minimal = H
 save = 0
 while i <= 0.5:
@@ -15,4 +13,4 @@ while i <= 0.5:
         minimal = abs(y - H)
         save = a
     i += 0.01
-print((save * 180) / math.pi)
+print(int((save * 180) / math.pi))
