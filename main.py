@@ -2,7 +2,7 @@ import math
 
 H, S, V = map(int, input().split())
 
-i = 0.25
+i = 0.30
 minimal = H
 save = 0
 while i <= 0.5:
