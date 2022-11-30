@@ -1,16 +1,43 @@
-import math
+# def f(n, m):
+#     return n % m == 0
+#
+#
+# for A in range(-1000, 100000):
+#     ok = True
+#     for x in range(1, 10000):
+#         if not((f(72, x) <= (not (f(120, x)))) or (A - x > 100)):
+#             ok = False
+#             break
+#     if ok:
+#         print(A)
+#         break
 
-H, S, V = map(int, input().split())
 
-i = 0.30
-minimal = H
-save = 0
-while i <= 0.5:
-    a = i * math.pi
-    t = S / (V * math.cos(a))
-    y = V * t * math.sin(a) - ((9.8 * (t ** 2)) / 2)
-    if abs(y - H) < minimal:
-        minimal = abs(y - H)
-        save = a
-    i += 0.01
-print(int((save * 180) / math.pi))
+# def f(n):
+#     if n == 0:
+#         return 0
+#     else:
+#         return f(n - 1) + n
+#
+#
+# print((1134567004 - 237567892 + 1) // 3)
+
+
+file = open("17.txt")
+data = [int(x) for x in file.readlines()]
+mini = 10000
+for el in data:
+    if str(el)[-1] == "7" and el < mini:
+        mini = el
+count = 0
+maxi = 0
+for i in range(len(data) - 1):
+    first = data[i]
+    second = data[i + 1]
+    row = str(first)[-1] + str(second)[-1]
+    if row.count("7") == 1 and (first ** 2 + second ** 2) < mini ** 2:
+        count += 1
+        if first ** 2 + second ** 2 > maxi:
+            maxi = first ** 2 + second ** 2
+print(count)
+print(maxi)
