@@ -1,43 +1,43 @@
-# def f(n, m):
-#     return n % m == 0
+# print("x y z w")
 #
-#
-# for A in range(-1000, 100000):
-#     ok = True
-#     for x in range(1, 10000):
-#         if not((f(72, x) <= (not (f(120, x)))) or (A - x > 100)):
-#             ok = False
-#             break
-#     if ok:
-#         print(A)
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             for w in range(2):
+#                 if not((w <= (y == z)) and (y == (z <= x))):
+#                     print(x, y, z, w, sep="-")
+
+# for N in range(1, 100000000):
+#     a = bin(N)[2:]
+#     b = ""
+#     for el in a:
+#         if el == "1":
+#             b += "0"
+#         else:
+#             b += "1"
+#     c = int(b, 2)
+#     if N - c == 979:
+#         print(N)
 #         break
 
 
-# def f(n):
-#     if n == 0:
-#         return 0
-#     else:
-#         return f(n - 1) + n
-#
-#
-# print((1134567004 - 237567892 + 1) // 3)
-
-
-file = open("17.txt")
-data = [int(x) for x in file.readlines()]
-mini = 10000
-for el in data:
-    if str(el)[-1] == "7" and el < mini:
-        mini = el
 count = 0
-maxi = 0
-for i in range(len(data) - 1):
-    first = data[i]
-    second = data[i + 1]
-    row = str(first)[-1] + str(second)[-1]
-    if row.count("7") == 1 and (first ** 2 + second ** 2) < mini ** 2:
+for i in range(59049, 531441):
+    print(i)
+    print(" ")
+    count_n = 0
+    count_4 = 0
+    while i > 0:
+        a = i % 9
+        if a == 4:
+            count_4 += 1
+            if count_4 > 1:
+                break
+        if a % 2 != 0:
+            count_n += 1
+            if count_n > 3:
+                break
+        i //= 9
+    if count_4 == 1 and count_n == 2:
         count += 1
-        if first ** 2 + second ** 2 > maxi:
-            maxi = first ** 2 + second ** 2
 print(count)
-print(maxi)
