@@ -1,37 +1,26 @@
-row = input()
-data = row.split(" ")
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-stack = []
-let = set()
-map = {}
-for el in data:
-    if el in alphabet:
-        let.add(el)
-count = len(let)
-for i in range(count):
-    string = input()
-    a = string.split("=")
-    map[a[0]] = a[1]
-print(map)
-for el in row:
-    if el in alphabet:
-        number = map[el]
-        stack.append(number)
-    if type(el) == int:
-        let.add(int(el))
-    else:
-        if el in "+-*/":
-            if len(stack) > 1:
-                c = stack.pop()
-                d = stack.pop()
-                if el == "+":
-                    stack.append(c + d)
-                elif el == "-":
-                    stack.append(d - c)
-                elif el == "*":
-                    stack.append(c * d)
-                else:
-                    stack.append(d / c)
-        else:
-
-
+n = int(input())
+file = open("input.txt")
+W = []
+for i in range(n):
+    data = [int(x) for x in file.readline().split()]
+    W.append(data)
+active = [True] * n
+R = W[0][:]
+P = [0] * n
+active[0] = False
+P[0] = -1
+for i in range(n - 1):
+    minDist = 1e10
+    for j in range(n):
+        if active[j] and R[j] < minDist:
+            minDist = R[j]
+            kMin = j
+    active[kMin] = False
+    for j in range(n):
+        if R[kMin] + W[kMin][j] < R[j]:
+            R[j] = R[kMin] + W[kMin][j]
+            P[j] = kMin
+i = n - 1
+while i >= 0:
+    print(i, end="")
+    i = P[i]
