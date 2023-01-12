@@ -1,6 +1,0 @@
-def func(list_numbers):
-    list1 = []
-    for i in range (len(list_numbers)):
-    if i == 0:
-        list1.append(sum(list_numbers[0] + list_numbers[1])
-    elif i == len(list_numbers
